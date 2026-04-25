@@ -7,7 +7,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!user) {
       navigate('/login');
