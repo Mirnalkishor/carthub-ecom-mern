@@ -7,9 +7,10 @@ const getAdminStats = async (req, res) => {
     const totalOrders = await Order.countDocuments({});
     const totalProducts = await Product.countDocuments({});
     const totalUsers = await User.countDocuments({ role: 'user' });
-
-    const orders = await Order.find({});
-    const totalRevenue = orders.reduce((acc, item) => acc + item.totalAmount, 0);
+    const revenueResult = await Order.aggregate([
+    { $group: { _id: null, totalRevenue: { $sum: '$totalAmount' } } }
+    ]);
+    const totalRevenue = revenueResult[0]?.totalRevenue || 0;
 
     res.json({ totalOrders, totalProducts, totalUsers, totalRevenue });
   } catch (error) {

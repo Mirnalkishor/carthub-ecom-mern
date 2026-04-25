@@ -15,11 +15,11 @@ const importData = async () => {
     await Product.deleteMany();
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash('password123', salt);
+    const hashedPassword = await bcrypt.hash('admin@123', salt);
     
     const adminUser = await User.create({
       name: 'Admin User',
-      email: 'admin@shopnest.com',
+      email: 'admin@carthub.com',
       password: hashedPassword,
       role: 'admin'
     });
@@ -64,7 +64,27 @@ const importData = async () => {
         imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
         ratings: 4.5,
         numReviews: 89
-      }
+      },
+      {
+  name: 'Stainless Steel Water Bottle',
+  description: 'Keeps drinks cold 24hrs or hot 12hrs. BPA-free.',
+  price: 35.00,
+  category: 'Sports',
+  stock: 100,
+  imageUrl: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800',
+  ratings: 4.6,
+  numReviews: 63
+},
+{
+  name: 'Slim Leather Wallet',
+  description: 'Genuine leather with RFID blocking. Fits 8 cards.',
+  price: 49.99,
+  category: 'Accessories',
+  stock: 75,
+  imageUrl: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=800',
+  ratings: 4.3,
+  numReviews: 31
+}
     ];
 
     await Product.insertMany(products);

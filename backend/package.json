@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "carthub-backend",
   "version": "1.0.0",
-  "author": "Shivansh Vasu",
+  "author": "Mirnal Kishor",
   "description": "",
   "main": "index.js",
   "scripts": {
