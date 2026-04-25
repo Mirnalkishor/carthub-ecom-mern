@@ -18,7 +18,11 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-brand">
         <Link to="/">
-          <img src="" alt="CartHub" style={{ height: '36px', width: '36px', borderRadius: '8px', objectFit: 'cover', filter: 'drop-shadow(0 2px 8px rgba(249, 115, 22, 0.35))' }} />
+          <span style={{
+            fontSize: '1.5rem',
+            marginRight: '6px',
+            filter: 'drop-shadow(0 2px 8px rgba(249, 115, 22, 0.35))'
+          }}>🛒</span>
           CartHub
         </Link>
       </div>
@@ -27,6 +31,7 @@ const Navbar = () => {
         <li><Link to="/cart">Cart ({cartItems.length})</Link></li>
         {user ? (
           <>
+            <li><Link to="/wishlist">Wishlist</Link></li>
             <li><Link to="/profile">Hi, {user.name}</Link></li>
             {user.role === 'admin' && <li><Link to="/admin">Admin</Link></li>}
             <li><button onClick={handleLogout} className="btn-logout">Logout</button></li>
